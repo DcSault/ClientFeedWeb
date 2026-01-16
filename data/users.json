@@ -1,0 +1,82 @@
+[
+  {
+    "id": "U001",
+    "email": "employe@union-materiaux.fr",
+    "password": "test123",
+    "name": "Jean Dupont",
+    "role": "employe",
+    "agenceId": null
+  },
+  {
+    "id": "U002",
+    "email": "directeur.marseille@union-materiaux.fr",
+    "password": "test123",
+    "name": "Marie Martin",
+    "role": "directeur",
+    "agenceId": "AG001"
+  },
+  {
+    "id": "U003",
+    "email": "directeur.aix@union-materiaux.fr",
+    "password": "test123",
+    "name": "Pierre Durand",
+    "role": "directeur",
+    "agenceId": "AG002"
+  },
+  {
+    "id": "U004",
+    "email": "ats1.marseille@union-materiaux.fr",
+    "password": "test123",
+    "name": "Lucas Bernard",
+    "role": "ats",
+    "agenceId": "AG001"
+  },
+  {
+    "id": "U005",
+    "email": "ats2.marseille@union-materiaux.fr",
+    "password": "test123",
+    "name": "Sophie Petit",
+    "role": "ats",
+    "agenceId": "AG001"
+  },
+  {
+    "id": "U006",
+    "email": "ats1.aix@union-materiaux.fr",
+    "password": "test123",
+    "name": "Thomas Moreau",
+    "role": "ats",
+    "agenceId": "AG002"
+  },
+  {
+    "id": "U007",
+    "email": "directeur.nice@union-materiaux.fr",
+    "password": "test123",
+    "name": "Isabelle Roux",
+    "role": "directeur",
+    "agenceId": "AG003"
+  },
+  {
+    "id": "U008",
+    "email": "ats1.nice@union-materiaux.fr",
+    "password": "test123",
+    "name": "Antoine Blanc",
+    "role": "ats",
+    "agenceId": "AG003"
+  },
+  {
+    "id": "U009",
+    "email": "directeur.montpellier@union-materiaux.fr",
+    "password": "test123",
+    "name": "François Lemaire",
+    "role": "directeur",
+    "agenceId": "AG006"
+  },
+  {
+    "id": "U010",
+    "email": "ats1.montpellier@union-materiaux.fr",
+    "password": "test123",
+    "name": "Claire Dubois",
+    "role": "ats",
+    "agenceId": "AG006"
+  }
+]

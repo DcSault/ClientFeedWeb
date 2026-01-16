@@ -1,0 +1,16 @@
+{
+  "name": "union-materiaux-chantiers",
+  "version": "1.0.0",
+  "description": "Application de signalement de chantiers Union-Matériaux",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "cors": "^2.8.5"
+  }
+}

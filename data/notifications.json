@@ -1,0 +1,20 @@
+[
+  {
+    "id": "N001",
+    "type": "nouveau_chantier",
+    "chantierId": "CH002",
+    "recipientId": "U003",
+    "message": "Nouveau chantier signalé par Jean Dupont",
+    "read": false,
+    "createdAt": "2026-01-12T14:15:00.000Z"
+  },
+  {
+    "id": "N002",
+    "type": "nouveau_chantier",
+    "chantierId": "CH003",
+    "recipientId": "U007",
+    "message": "Nouveau chantier signalé par Jean Dupont",
+    "read": false,
+    "createdAt": "2026-01-14T11:00:00.000Z"
+  }
+]

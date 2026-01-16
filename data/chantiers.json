@@ -1,0 +1,47 @@
+[
+  {
+    "id": "CH001",
+    "lat": 43.2965,
+    "lon": 5.3800,
+    "description": "Construction d'un immeuble résidentiel - 6 étages",
+    "photo": null,
+    "reportedBy": "U001",
+    "reportedByName": "Jean Dupont",
+    "reportedAt": "2026-01-10T09:30:00.000Z",
+    "status": "affecté",
+    "agenceId": "AG001",
+    "agenceName": "Union-Matériaux Marseille",
+    "assignedTo": "U004",
+    "assignedToName": "Lucas Bernard"
+  },
+  {
+    "id": "CH002",
+    "lat": 43.5350,
+    "lon": 5.4500,
+    "description": "Rénovation villa avec extension",
+    "photo": null,
+    "reportedBy": "U001",
+    "reportedByName": "Jean Dupont",
+    "reportedAt": "2026-01-12T14:15:00.000Z",
+    "status": "nouveau",
+    "agenceId": "AG002",
+    "agenceName": "Union-Matériaux Aix-en-Provence",
+    "assignedTo": null,
+    "assignedToName": null
+  },
+  {
+    "id": "CH003",
+    "lat": 43.7150,
+    "lon": 7.2700,
+    "description": "Chantier de terrassement pour parking souterrain",
+    "photo": null,
+    "reportedBy": "U001",
+    "reportedByName": "Jean Dupont",
+    "reportedAt": "2026-01-14T11:00:00.000Z",
+    "status": "nouveau",
+    "agenceId": "AG003",
+    "agenceName": "Union-Matériaux Nice",
+    "assignedTo": null,
+    "assignedToName": null
+  }
+]

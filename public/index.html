@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Union-Matériaux - Signalement Chantiers</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Écran de connexion -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <div class="logo">
+                <i class="fas fa-hard-hat"></i>
+                <h1>Union-Matériaux</h1>
+                <p>Signalement Chantiers</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Mot de passe" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+                <div id="login-error" class="error-message"></div>
+            </form>
+            <div class="test-accounts">
+                <p><strong>Comptes de test :</strong></p>
+                <small>
+                    👷 Employé: employe@union-materiaux.fr<br>
+                    👔 Directeur Marseille: directeur.marseille@union-materiaux.fr<br>
+                    👔 Directeur Aix: directeur.aix@union-materiaux.fr<br>
+                    📋 ATS: ats1.marseille@union-materiaux.fr<br>
+                    <em>Mot de passe: test123</em>
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Écran principal avec carte -->
+    <div id="main-screen" class="screen">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <i class="fas fa-hard-hat"></i>
+                <span id="user-name">Utilisateur</span>
+            </div>
+            <div class="header-right">
+                <button id="btn-notifications" class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                    <span id="notification-badge" class="badge hidden">0</span>
+                </button>
+                <button id="btn-logout" class="icon-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Carte -->
+        <div id="map"></div>
+
+        <!-- Bouton de signalement (employé uniquement) -->
+        <button id="btn-signal" class="fab">
+            <i class="fas fa-plus"></i>
+            <span class="fab-label">Signaler</span>
+        </button>
+
+        <!-- Barre de filtres -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-map-marker-alt"></i> Tous
+            </button>
+            <button class="filter-btn" data-filter="nouveau">
+                <i class="fas fa-star"></i> Nouveaux
+            </button>
+            <button class="filter-btn" data-filter="affecté">
+                <i class="fas fa-user-check"></i> Affectés
+            </button>
+            <button class="filter-btn" data-filter="agences">
+                <i class="fas fa-building"></i> Agences
+            </button>
+        </div>
+
+        <!-- Panel de notifications -->
+        <div id="notifications-panel" class="side-panel hidden">
+            <div class="panel-header">
+                <h3><i class="fas fa-bell"></i> Notifications</h3>
+                <button class="close-panel"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="notifications-list" class="panel-content">
+                <p class="empty-message">Aucune notification</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de signalement -->
+    <div id="signal-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-map-pin"></i> Signaler un chantier</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="proximity-warning" class="warning-box hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Un chantier existe déjà à proximité !</span>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-location-arrow"></i> Position GPS</label>
+                    <div id="signal-location" class="location-display">
+                        <span id="signal-coords">Chargement...</span>
+                        <button type="button" id="btn-refresh-location" class="btn-small">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-building"></i> Agence la plus proche</label>
+                    <div id="nearest-agence" class="info-box">Recherche...</div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-camera"></i> Photo du chantier</label>
+                    <div class="photo-upload">
+                        <input type="file" id="signal-photo" accept="image/*" capture="environment">
+                        <div id="photo-preview" class="photo-preview">
+                            <i class="fas fa-camera"></i>
+                            <span>Prendre une photo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-edit"></i> Description</label>
+                    <textarea id="signal-description" placeholder="Décrivez le chantier..." rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-cancel-signal" class="btn-secondary">Annuler</button>
+                <button id="btn-submit-signal" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> Envoyer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal détail chantier -->
+    <div id="chantier-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-hard-hat"></i> Détail du chantier</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="chantier-detail">
+                <!-- Contenu dynamique -->
+            </div>
+            <div class="modal-footer" id="chantier-actions">
+                <!-- Actions dynamiques selon le rôle -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal affectation -->
+    <div id="assign-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> Affecter à un ATS</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="ats-list" class="ats-list">
+                    <!-- Liste des ATS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

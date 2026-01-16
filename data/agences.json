@@ -1,0 +1,62 @@
+[
+  {
+    "id": "AG001",
+    "name": "Union-Matériaux Marseille",
+    "address": "123 Boulevard de la Libération, 13001 Marseille",
+    "lat": 43.2965,
+    "lon": 5.3698,
+    "phone": "04 91 00 00 01",
+    "directeurId": "U002",
+    "directeurName": "Marie Martin"
+  },
+  {
+    "id": "AG002",
+    "name": "Union-Matériaux Aix-en-Provence",
+    "address": "45 Avenue des Alpes, 13100 Aix-en-Provence",
+    "lat": 43.5297,
+    "lon": 5.4474,
+    "phone": "04 42 00 00 01",
+    "directeurId": "U003",
+    "directeurName": "Pierre Durand"
+  },
+  {
+    "id": "AG003",
+    "name": "Union-Matériaux Nice",
+    "address": "78 Promenade des Anglais, 06000 Nice",
+    "lat": 43.7102,
+    "lon": 7.2620,
+    "phone": "04 93 00 00 01",
+    "directeurId": "U007",
+    "directeurName": "Isabelle Roux"
+  },
+  {
+    "id": "AG004",
+    "name": "Union-Matériaux Toulon",
+    "address": "12 Avenue de la République, 83000 Toulon",
+    "lat": 43.1242,
+    "lon": 5.9280,
+    "phone": "04 94 00 00 01",
+    "directeurId": "U002",
+    "directeurName": "Marie Martin"
+  },
+  {
+    "id": "AG005",
+    "name": "Union-Matériaux Avignon",
+    "address": "56 Rue de la République, 84000 Avignon",
+    "lat": 43.9493,
+    "lon": 4.8055,
+    "phone": "04 90 00 00 01",
+    "directeurId": "U003",
+    "directeurName": "Pierre Durand"
+  },
+  {
+    "id": "AG006",
+    "name": "Union-Matériaux Montpellier",
+    "address": "125 Avenue de la Mer, 34000 Montpellier",
+    "lat": 43.6108,
+    "lon": 3.8767,
+    "phone": "04 67 00 00 01",
+    "directeurId": "U009",
+    "directeurName": "François Lemaire"
+  }
+]
