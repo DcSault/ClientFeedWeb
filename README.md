@@ -62,6 +62,9 @@ L'application est compatible avec Vercel et utilise des Serverless Functions pou
 
 ```
 ClientFeed/
+├── index.html             # Page principale
+├── styles.css             # Styles CSS
+├── app.js                 # Logique JavaScript frontend
 ├── server.js              # Serveur Express.js (dev local)
 ├── vercel.json            # Configuration Vercel
 ├── package.json           # Dépendances
@@ -76,8 +79,8 @@ ClientFeed/
 │   ├── agences.json       # Agences Union-Matériaux
 │   ├── chantiers.json     # Chantiers signalés
 │   └── notifications.json # Notifications
-├── uploads/               # Photos des chantiers
-└── public/                # Frontend
+└── uploads/               # Photos des chantiers
+```
     ├── index.html         # Page principale
     ├── styles.css         # Styles CSS
     └── app.js             # Logique JavaScript

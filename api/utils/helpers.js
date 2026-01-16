@@ -1,18 +1,37 @@
 const path = require('path');
 const fs = require('fs');
 
-// Chemins des fichiers JSON
-const DATA_PATH = path.join(process.cwd(), 'data');
+// Chemins des fichiers JSON - utiliser __dirname pour Vercel
+const DATA_PATH = path.join(__dirname, '..', '..', 'data');
 const CHANTIERS_FILE = path.join(DATA_PATH, 'chantiers.json');
 const USERS_FILE = path.join(DATA_PATH, 'users.json');
 const AGENCES_FILE = path.join(DATA_PATH, 'agences.json');
 const NOTIFICATIONS_FILE = path.join(DATA_PATH, 'notifications.json');
 
+// Stockage en mémoire pour Vercel (lecture seule sur le filesystem)
+let memoryStore = {
+    chantiers: null,
+    users: null,
+    agences: null,
+    notifications: null
+};
+
 // Helpers pour lire/écrire JSON
 function readJSON(filePath) {
     try {
+        // Déterminer le type de données
+        const filename = path.basename(filePath, '.json');
+        
+        // Si déjà en mémoire, retourner
+        if (memoryStore[filename] !== null) {
+            return memoryStore[filename];
+        }
+        
+        // Sinon, charger depuis le fichier
         if (fs.existsSync(filePath)) {
-            return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            memoryStore[filename] = data;
+            return data;
         }
     } catch (error) {
         console.error(`Erreur lecture ${filePath}:`, error);
@@ -21,7 +40,23 @@ function readJSON(filePath) {
 }
 
 function writeJSON(filePath, data) {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    try {
+        // Déterminer le type de données
+        const filename = path.basename(filePath, '.json');
+        
+        // Stocker en mémoire
+        memoryStore[filename] = data;
+        
+        // Essayer d'écrire sur le filesystem (fonctionnera en local, pas sur Vercel)
+        try {
+            fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+        } catch (writeError) {
+            // Ignorer l'erreur d'écriture sur Vercel (lecture seule)
+            console.log('Écriture filesystem ignorée (Vercel read-only)');
+        }
+    } catch (error) {
+        console.error(`Erreur écriture ${filePath}:`, error);
+    }
 }
 
 // Calcul distance entre deux points GPS (formule Haversine)
