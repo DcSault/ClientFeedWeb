@@ -24,6 +24,7 @@ services:
           rm -rf /tmp/repo
         fi &&
         sed -i "s/app.listen(PORT,/app.listen(PORT, '0.0.0.0',/" /app/server.js &&
+        sed -i "s|http://localhost:3000/api|/api|g" /app/public/app.js &&
         npm install &&
         npm start
     restart: unless-stopped

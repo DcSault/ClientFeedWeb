@@ -1,5 +1,5 @@
-// Configuration API
-const API_URL = 'http://localhost:3000/api';
+// Configuration API - URL relative pour fonctionner depuis n'importe quel appareil
+const API_URL = '/api';
 
 // État de l'application
 let currentUser = null;
