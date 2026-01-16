@@ -1,5 +1,5 @@
-// Configuration API
-const API_URL = 'http://localhost:3000/api';
+// Configuration API - Utilise une URL relative pour Vercel
+const API_URL = '/api';
 
 // État de l'application
 let currentUser = null;
@@ -409,21 +409,26 @@ async function submitSignal() {
     const description = document.getElementById('signal-description').value;
     const photoInput = document.getElementById('signal-photo');
     
-    const formData = new FormData();
-    formData.append('lat', currentPosition.lat);
-    formData.append('lon', currentPosition.lon);
-    formData.append('description', description);
-    formData.append('reportedBy', currentUser.id);
-    formData.append('reportedByName', currentUser.name);
+    // Préparer les données en JSON (compatible Vercel Serverless)
+    const signalData = {
+        lat: currentPosition.lat,
+        lon: currentPosition.lon,
+        description: description,
+        reportedBy: currentUser.id,
+        reportedByName: currentUser.name,
+        photo: null
+    };
     
+    // Convertir la photo en base64 si présente
     if (photoInput.files[0]) {
-        formData.append('photo', photoInput.files[0]);
+        signalData.photo = await fileToBase64(photoInput.files[0]);
     }
     
     try {
         const response = await fetch(`${API_URL}/chantiers`, {
             method: 'POST',
-            body: formData
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(signalData)
         });
         
         const data = await response.json();
@@ -442,6 +447,16 @@ async function submitSignal() {
         console.error(error);
         showToast('Erreur lors du signalement', 'error');
     }
+}
+
+// Convertir un fichier en base64
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
 }
 
 // ============ DÉTAIL CHANTIER ============

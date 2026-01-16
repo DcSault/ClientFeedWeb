@@ -21,6 +21,8 @@ Application mobile (maquette) permettant aux employés d'Union-Matériaux de sig
 
 ## 🛠️ Installation
 
+### Développement local
+
 ```bash
 # Installer les dépendances
 npm install
@@ -30,6 +32,18 @@ npm start
 ```
 
 L'application sera accessible sur : http://localhost:3000
+
+### Déploiement Vercel
+
+```bash
+# Installer Vercel CLI
+npm install -g vercel
+
+# Déployer
+vercel
+```
+
+L'application est compatible avec Vercel et utilise des Serverless Functions pour l'API.
 
 ## 👤 Comptes de Test
 
@@ -48,8 +62,15 @@ L'application sera accessible sur : http://localhost:3000
 
 ```
 ClientFeed/
-├── server.js              # Serveur Express.js
+├── server.js              # Serveur Express.js (dev local)
+├── vercel.json            # Configuration Vercel
 ├── package.json           # Dépendances
+├── api/                   # API Serverless (Vercel)
+│   ├── utils/helpers.js   # Fonctions utilitaires
+│   ├── login.js           # Authentification
+│   ├── chantiers/         # Endpoints chantiers
+│   ├── agences/           # Endpoints agences
+│   └── notifications/     # Endpoints notifications
 ├── data/                  # Données JSON (simule la DB)
 │   ├── users.json         # Utilisateurs
 │   ├── agences.json       # Agences Union-Matériaux
