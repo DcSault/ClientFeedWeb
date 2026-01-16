@@ -23,6 +23,7 @@ services:
           cp -r /tmp/repo/* /app/ &&
           rm -rf /tmp/repo
         fi &&
+        sed -i "s/app.listen(PORT,/app.listen(PORT, '0.0.0.0',/" /app/server.js &&
         npm install &&
         npm start
     restart: unless-stopped

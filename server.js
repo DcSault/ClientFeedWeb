@@ -321,7 +321,7 @@ app.get('/api/agences/:id/chantiers', (req, res) => {
 
 // Démarrer le serveur
 initData();
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Serveur Union-Matériaux démarré sur http://localhost:${PORT}`);
     console.log('📁 Données stockées dans ./data');
     console.log('📸 Photos stockées dans ./uploads');
