@@ -1,7 +1,7 @@
 [
   {
     "id": "U001",
-    "email": "employe@union-materiaux.fr",
+    "username": "employe",
     "password": "test123",
     "name": "Jean Dupont",
     "role": "employe",
@@ -9,7 +9,7 @@
   },
   {
     "id": "U002",
-    "email": "directeur.marseille@union-materiaux.fr",
+    "username": "directeur.marseille",
     "password": "test123",
     "name": "Marie Martin",
     "role": "directeur",
@@ -17,7 +17,7 @@
   },
   {
     "id": "U003",
-    "email": "directeur.aix@union-materiaux.fr",
+    "username": "directeur.aix",
     "password": "test123",
     "name": "Pierre Durand",
     "role": "directeur",
@@ -25,7 +25,7 @@
   },
   {
     "id": "U004",
-    "email": "ats1.marseille@union-materiaux.fr",
+    "username": "ats1.marseille",
     "password": "test123",
     "name": "Lucas Bernard",
     "role": "ats",
@@ -33,7 +33,7 @@
   },
   {
     "id": "U005",
-    "email": "ats2.marseille@union-materiaux.fr",
+    "username": "ats2.marseille",
     "password": "test123",
     "name": "Sophie Petit",
     "role": "ats",
@@ -41,7 +41,7 @@
   },
   {
     "id": "U006",
-    "email": "ats1.aix@union-materiaux.fr",
+    "username": "ats1.aix",
     "password": "test123",
     "name": "Thomas Moreau",
     "role": "ats",
@@ -49,7 +49,7 @@
   },
   {
     "id": "U007",
-    "email": "directeur.nice@union-materiaux.fr",
+    "username": "directeur.nice",
     "password": "test123",
     "name": "Isabelle Roux",
     "role": "directeur",
@@ -57,7 +57,7 @@
   },
   {
     "id": "U008",
-    "email": "ats1.nice@union-materiaux.fr",
+    "username": "ats1.nice",
     "password": "test123",
     "name": "Antoine Blanc",
     "role": "ats",
@@ -65,7 +65,7 @@
   },
   {
     "id": "U009",
-    "email": "directeur.montpellier@union-materiaux.fr",
+    "username": "directeur.montpellier",
     "password": "test123",
     "name": "François Lemaire",
     "role": "directeur",
@@ -73,7 +73,7 @@
   },
   {
     "id": "U010",
-    "email": "ats1.montpellier@union-materiaux.fr",
+    "username": "ats1.montpellier",
     "password": "test123",
     "name": "Claire Dubois",
     "role": "ats",

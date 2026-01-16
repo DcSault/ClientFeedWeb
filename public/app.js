@@ -63,7 +63,7 @@ function checkSession() {
 async function handleLogin(e) {
     e.preventDefault();
     
-    const email = document.getElementById('login-email').value;
+    const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
     const errorDiv = document.getElementById('login-error');
     
@@ -71,7 +71,7 @@ async function handleLogin(e) {
         const response = await fetch(`${API_URL}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ username, password })
         });
         
         const data = await response.json();
@@ -552,7 +552,6 @@ async function openAssignModal() {
                 <i class="fas fa-user-tie"></i>
                 <div>
                     <div class="ats-name">${a.name}</div>
-                    <div class="ats-email">${a.email}</div>
                 </div>
             </div>
         `).join('');
